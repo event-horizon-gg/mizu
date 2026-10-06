@@ -40,6 +40,7 @@ public struct MizuSegmentedControl<Value: Hashable>: View {
                 }.buttonStyle(MizuPressStyle())
                     .foregroundStyle(selection == value ? MizuPalette.ink : .secondary)
                     .accessibilityAddTraits(selection == value ? .isSelected : [])
+                    .mizuFeedback(.selection, trigger: selection, isEnabled: selection == value)
             }
         }.padding(5)
             .background(MizuPalette.recess, in: RoundedRectangle(cornerRadius: stacked ? 23 : 100))

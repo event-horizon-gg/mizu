@@ -3,11 +3,11 @@ import Mizu
 
 @main
 struct ShowcaseApp: App {
-    var body: some Scene { WindowGroup {
+    var body: some Scene { WindowGroup { NavigationStack {
         if ProcessInfo.processInfo.arguments.contains("--large-text") {
             ShowcaseView().dynamicTypeSize(.accessibility3)
         } else { ShowcaseView() }
-    } }
+    } } }
 }
 
 struct ShowcaseView: View {
@@ -15,9 +15,10 @@ struct ShowcaseView: View {
     @State private var selection = "Overview"
     @State private var feedback = "Try an action"
     @State private var rounded = true
+    @State private var effects = !ProcessInfo.processInfo.arguments.contains("--no-effects")
+    @State private var haptics = !ProcessInfo.processInfo.arguments.contains("--no-effects")
     @State private var previewReduceMotion = ProcessInfo.processInfo.arguments.contains("--reduce-motion")
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
-    private var reduceMotion: Bool { systemReduceMotion || previewReduceMotion }
     private var launchAppearance: MizuAppearance? {
         if ProcessInfo.processInfo.arguments.contains("--dark") { return .dark }
         if ProcessInfo.processInfo.arguments.contains("--light") { return .light }
@@ -54,6 +55,8 @@ struct ShowcaseView: View {
                     MizuSegmentedControl(MizuAppearance.allCases, selection: $appearance, title: { $0.rawValue })
                     Toggle("Rounded surfaces", isOn: $rounded)
                     Toggle("Preview Reduce Motion", isOn: $previewReduceMotion)
+                    MizuSwitch("Pow visual effects", isOn: $effects)
+                    MizuSwitch("Haptic feedback", isOn: $haptics)
                     Text(systemReduceMotion ? "System Reduce Motion is enabled." : "Motion also follows the system accessibility setting.")
                         .font(.footnote).foregroundStyle(.secondary)
                 }.padding(22).mizuSurface()
@@ -62,6 +65,12 @@ struct ShowcaseView: View {
         }.background(MizuPalette.canvas)
             .preferredColorScheme(appearance.colorScheme)
             .mizuReduceMotion(previewReduceMotion)
+            .mizuFeedback(.init(effectsEnabled: effects, hapticsEnabled: haptics))
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    NavigationLink(destination: CatalogueView().mizuReduceMotion(previewReduceMotion).mizuFeedback(.init(effectsEnabled: effects, hapticsEnabled: haptics))) { Label("Component catalogue", systemImage: "square.grid.2x2") }
+                }
+            }
             .onAppear { if let launchAppearance { appearance = launchAppearance } }
     }
 }

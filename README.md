@@ -31,14 +31,27 @@ VStack(alignment: .leading, spacing: 16) {
 - `.mizuSurface(cornerRadius:fill:)`: full-width surface; apply after your content padding.
 - `MizuSegmentedControl(_:selection:title:)`: unique hashable values, native buttons and selected accessibility traits. Supply a selection present in the values and short, localized labels.
 
-Controls respect system Reduce Motion; selection stacks at accessibility text sizes. Strings and brand colours belong to your app. No network requests, analytics, stored preferences or business models are included.
+Controls respect system Reduce Motion; selection stacks at accessibility text sizes. Strings and brand colours belong to your app. The library makes no network requests and includes no analytics, stored preferences or business models. Copy writes the clipboard only after a user action.
 
 ## Showcase
 
 Open `Examples/MizuShowcase.xcodeproj`, choose **MizuShowcase** and an iPhone simulator. The app demonstrates selection, actions, adaptive layers, appearance, radius and Reduce Motion. `--light` and `--dark` launch arguments support visual checks.
 
+## Component catalogue and Pow
+
+All 22 reference component families have initial native counterparts, available in the showcase's **Component catalogue**. See [components and API boundaries](docs/COMPONENTS.md). This is independent native family coverage, not full upstream feature/prop parity.
+
+Mizu bundles Pow 1.0.6 for default semantic feedback in its new controls. Apps do not need to import Pow. Read [feedback configuration](docs/FEEDBACK.md) to disable visual effects or haptics independently. System Reduce Motion always wins. The original button styles retain their established springs, preserving Inari's existing transition.
+
+```swift
+MizuButton("Continue") { proceed() }
+MizuSwitch("Notifications", isOn: $notifications)
+// Configure a subtree:
+RootView().mizuFeedback(.init(effectsEnabled: true, hapticsEnabled: false))
+```
+
 ## Validation and roadmap
 
 GitHub Actions compiles the package on macOS, builds the iPhone showcase and runs UI checks for selection, action callbacks, disabled state and operation with large text/Reduce Motion. Inari consumes the local sibling package during development. No remote repository or release tag exists yet; nothing has been published.
 
-This first slice extracts foundations. Further components, a versioned dependency and broader VoiceOver/Dynamic Type testing remain planned. See [design provenance](docs/DESIGN-PROVENANCE.md) for the reference audit and release boundaries. A distribution licence has not yet been selected.
+Foundations and initial native versions of the 22 reference component families are implemented. Full variant parity, localisation, richer composition APIs, a versioned dependency and broader VoiceOver/Dynamic Type testing remain planned. See [design provenance](docs/DESIGN-PROVENANCE.md) for the reference audit and release boundaries. A distribution licence has not yet been selected.

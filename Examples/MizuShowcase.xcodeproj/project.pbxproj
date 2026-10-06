@@ -1,5 +1,7 @@
 // !$*UTF8*$!
 { archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
+A00000000000000000000031 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MizuShowcase/CatalogueView.swift; sourceTree = "<group>"; };
+A00000000000000000000032 = {isa = PBXBuildFile; fileRef = A00000000000000000000031; };
 A00000000000000000000020 = {isa = PBXNativeTarget; buildConfigurationList = A00000000000000000000026; buildPhases = (A00000000000000000000022, A00000000000000000000025); buildRules = (); dependencies = (A00000000000000000000029); name = MizuShowcaseUITests; productName = MizuShowcaseUITests; productReference = A00000000000000000000021; productType = "com.apple.product-type.bundle.ui-testing"; };
 A00000000000000000000021 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MizuShowcaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 A00000000000000000000022 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000024); runOnlyForDeploymentPostprocessing = 0; };
@@ -14,10 +16,10 @@ A00000000000000000000028 = {isa = XCBuildConfiguration; buildSettings = {CODE_SI
 
 A00000000000000000000001 = {isa = PBXProject; attributes = {LastUpgradeCheck = 2700;}; buildConfigurationList = A0000000000000000000000A; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; knownRegions = (en, Base); mainGroup = A00000000000000000000003; productRefGroup = A00000000000000000000004; projectDirPath = ""; projectRoot = ""; packageReferences = (A00000000000000000000010); targets = (A00000000000000000000002, A00000000000000000000020); };
 A00000000000000000000002 = {isa = PBXNativeTarget; buildConfigurationList = A0000000000000000000000B; buildPhases = (A00000000000000000000006, A00000000000000000000007, A00000000000000000000008); buildRules = (); dependencies = (); packageProductDependencies = (A00000000000000000000011); name = MizuShowcase; productName = MizuShowcase; productReference = A00000000000000000000005; productType = "com.apple.product-type.application"; };
-A00000000000000000000003 = {isa = PBXGroup; children = (A00000000000000000000023, A00000000000000000000012, A00000000000000000000004); sourceTree = "<group>"; };
+A00000000000000000000003 = {isa = PBXGroup; children = (A00000000000000000000031, A00000000000000000000023, A00000000000000000000012, A00000000000000000000004); sourceTree = "<group>"; };
 A00000000000000000000004 = {isa = PBXGroup; children = (A00000000000000000000005, A00000000000000000000021); name = Products; sourceTree = "<group>"; };
 A00000000000000000000005 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MizuShowcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
-A00000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000013); runOnlyForDeploymentPostprocessing = 0; };
+A00000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000013, A00000000000000000000032); runOnlyForDeploymentPostprocessing = 0; };
 A00000000000000000000007 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000014); runOnlyForDeploymentPostprocessing = 0; };
 A00000000000000000000008 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 A00000000000000000000010 = {isa = XCLocalSwiftPackageReference; relativePath = ..; };

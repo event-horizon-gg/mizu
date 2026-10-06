@@ -9,7 +9,7 @@ Mizu is an independent SwiftUI library inspired by those broad design principles
 
 ## Package boundary
 
-Mizu owns adaptive neutral colours, appearance choices, surface styling, press/action styles, reduced-motion-aware springs and a generic segmented control. iOS 17 is the primary minimum; macOS 14 compilation is also supported. The showcase is an iOS app.
+Mizu owns adaptive neutral colours, appearance choices, surface styling, press/action styles, reduced-motion-aware springs, semantic Pow feedback and native component counterparts listed in COMPONENTS.md. Pow is a separately licensed MIT dependency; its notice is bundled. The no-upstream-copying statement above concerns Fluid Functionalism, not this explicitly declared dependency. iOS 17 is the primary minimum; macOS 14 compilation is also supported. The showcase is an iOS app.
 
 Inari owns its brand accent, logo, card layout, insurer assets, provider sessions, persistence, coverage models, privacy cover, authentication and Pow effects. Its existing card/coverage selector and heading transition remain in Inari unchanged.
 
