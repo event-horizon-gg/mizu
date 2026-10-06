@@ -27,3 +27,7 @@ Same local toolchain and authorized iPhone 18 Pro simulator.
 - Existing Inari card, header and selector still match the pre-extraction source verbatim.
 
 Native menu/colour-picker interactions, complete VoiceOver review, every large-text layout and physical-device haptic feel remain validation follow-ups. GitHub Actions is authored to run the seven showcase checks and retain its result bundle; no hosted run has occurred.
+
+## Feedback refinement
+
+Removed expanding outline/ripple feedback for every activation, selection and success event after visual review. Existing press/selection springs, optional haptics and reduced-motion-aware error shake remain. Final macOS compilation and three targeted iPhone 18 Pro UI checks pass (buttons/repeated success, selection/disabled state and question flow).

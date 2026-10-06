@@ -14,7 +14,7 @@ Text(errorMessage)
     .mizuFeedback(.error, trigger: failedAttemptCount)
 ```
 
-Use a monotonically changing event counter when the same operation can repeat. A value must change to trigger feedback; mounting a view alone does not trigger a change effect. Success means the caller has confirmed success, not merely tapped a button. Errors use Pow shake; action/selection/success use a quiet outline pulse. iOS haptics reflect the event type. Pow jump is deliberately not used because its implementation also generates impact haptics internally, which would prevent independent haptic opt-out.
+Use a monotonically changing event counter when the same operation can repeat. A value must change to trigger feedback; mounting a view alone does not trigger a change effect. Success means the caller has confirmed success, not merely tapped a button. Actions, selections and successes add no expanding outlines or ripples. Controls retain their subtle press/selection springs and optional event-specific haptics. Errors use Pow shake when motion is enabled. iOS haptics reflect the event type. Pow jump is deliberately not used because its implementation also generates impact haptics internally, which would prevent independent haptic opt-out.
 
 ```swift
 RootView()

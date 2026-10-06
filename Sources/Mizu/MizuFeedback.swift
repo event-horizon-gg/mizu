@@ -44,19 +44,21 @@ private struct MizuFeedbackModifier<Value: Equatable>: ViewModifier {
     @Environment(\.isEnabled) private var enabled
     private var visual: Bool { requested && enabled && configuration.effectsEnabled && !systemReduceMotion && !appReduceMotion }
     private var haptics: Bool { requested && enabled && configuration.hapticsEnabled }
-    private var effect: AnyChangeEffect {
+    // Routine actions, selections and successes do not draw expanding outlines.
+    // Controls already provide press/selection feedback; retain only error motion here.
+    @ViewBuilder private func visualContent(_ content: Content) -> some View {
         switch kind {
-        case .error: .shake
         case .activation, .selection, .success:
-            .pulse(shape: RoundedRectangle(cornerRadius: 16), style: Color.primary.opacity(0.12), drawingMode: .stroke, count: 1)
+            content
+        case .error:
+            content.changeEffect(.shake, value: trigger, isEnabled: visual)
         }
     }
     func body(content: Content) -> some View {
         #if os(iOS)
-        content.changeEffect(effect, value: trigger, isEnabled: visual)
-            .changeEffect(haptic, value: trigger, isEnabled: haptics)
+        visualContent(content).changeEffect(haptic, value: trigger, isEnabled: haptics)
         #else
-        content.changeEffect(effect, value: trigger, isEnabled: visual)
+        visualContent(content)
         #endif
     }
     #if os(iOS)
