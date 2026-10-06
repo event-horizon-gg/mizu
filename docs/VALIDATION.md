@@ -31,3 +31,5 @@ Native menu/colour-picker interactions, complete VoiceOver review, every large-t
 ## Feedback refinement
 
 Removed expanding outline/ripple feedback for every activation, selection and success event after visual review. Existing press/selection springs, optional haptics and reduced-motion-aware error shake remain. Final macOS compilation and three targeted iPhone 18 Pro UI checks pass (buttons/repeated success, selection/disabled state and question flow).
+
+Button response refinement: action buttons now apply press dimming/compression immediately and animate only their release. Tertiary/ghost MizuButton variants opt into the same immediate press behavior. Legacy MizuPressStyle defaults retain their prior animation, preserving Inari's selector feedback. macOS build and two targeted iPhone 18 Pro interaction checks pass. Motion/opacity feel still benefits from human review; these checks verify actions and disabled behavior, not perceived animation quality.

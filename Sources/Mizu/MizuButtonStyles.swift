@@ -2,15 +2,16 @@ import SwiftUI
 
 /// Subtle feedback for an already styled control; size and label remain caller-owned.
 public struct MizuPressStyle: ButtonStyle {
+    private let animatePress: Bool
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
     @Environment(\.mizuReduceMotion) private var appReduceMotion
     private var reduceMotion: Bool { systemReduceMotion || appReduceMotion }
-    public init() {}
+    public init(animatePress: Bool = true) { self.animatePress = animatePress }
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label.contentShape(Capsule())
             .opacity(configuration.isPressed ? 0.65 : 1)
             .scaleEffect(reduceMotion ? 1 : (configuration.isPressed ? 0.97 : 1))
-            .animation(MizuMotion.press(reduceMotion: reduceMotion), value: configuration.isPressed)
+            .animation(configuration.isPressed && !animatePress ? nil : MizuMotion.press(reduceMotion: reduceMotion), value: configuration.isPressed)
     }
 }
 
@@ -32,7 +33,7 @@ public struct MizuActionStyle: ButtonStyle {
             .foregroundStyle(secondary ? Color.primary : MizuPalette.invertedInk)
             .background(secondary ? MizuPalette.recess : Color.primary, in: RoundedRectangle(cornerRadius: cornerRadius))
             .opacity(enabled ? (configuration.isPressed ? 0.75 : 1) : 0.35)
-            .scaleEffect(reduceMotion ? 1 : (configuration.isPressed ? 0.98 : 1))
-            .animation(MizuMotion.press(reduceMotion: reduceMotion), value: configuration.isPressed)
+            .scaleEffect(reduceMotion ? 1 : (configuration.isPressed ? 0.97 : 1))
+            .animation(configuration.isPressed ? nil : MizuMotion.press(reduceMotion: reduceMotion), value: configuration.isPressed)
     }
 }

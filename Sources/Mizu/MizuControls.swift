@@ -18,7 +18,7 @@ public struct MizuButton<Label: View>: View {
             if kind == .primary || kind == .secondary {
                 button.buttonStyle(MizuActionStyle(secondary: kind == .secondary))
             } else {
-                button.buttonStyle(MizuPressStyle())
+                button.buttonStyle(MizuPressStyle(animatePress: false))
                     .background(kind == .tertiary ? MizuPalette.recess : .clear, in: Capsule())
             }
         }.mizuFeedback(.activation, trigger: activation)
